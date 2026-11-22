@@ -51,16 +51,53 @@ main{max-width:1440px}
 .choice{background:#fff8f7}
 .cart{box-shadow:0 8px 28px #885a5410}
 @media(max-width:680px){.welcome{gap:12px}.brand:before{font-size:36px}}
+
+/* Página de produto no estilo do esboço escolhido */
+body{background:#fffaf8}
+header{max-width:1350px;margin:auto;padding:15px 4%;border:0;min-height:110px}
+.brand{font-size:clamp(26px,3vw,39px);padding-left:95px;line-height:.9}
+.brand:before{content:"♧";font-size:80px;top:0;left:0;font-weight:400}
+.brand small{font-size:24px;letter-spacing:0}
+.header-links{gap:20px}.header-links>a{font-size:24px;color:var(--gold)}
+.searchbox{border:1px solid #f1d8d0;border-radius:24px;padding:8px 14px;color:var(--gold)}
+.searchbox input{border:0;outline:0;background:transparent;width:150px;font-size:12px}
+.mainnav{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#fff6f0,#fbe9e5);padding:12px 15px;border-top:1px solid #f4e1d8;border-bottom:1px solid #f4e1d8}
+.mainnav button,.mainnav a{border:0;background:transparent;color:#775447;font-size:13px;padding:10px 13px;text-decoration:none;border-radius:25px}
+.mainnav button:first-child{background:var(--gold);color:#fff}
+.mainnav button:hover,.mainnav a:hover{background:#f4d8cf}
+main{max-width:1320px;padding:0 3%}
+.section{padding:20px 0}
+#product-detail>.back{margin:10px 0}
+.detail{background:transparent;box-shadow:none;border:0;padding:0;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.detail>img{height:590px;border-radius:14px;box-shadow:0 5px 20px #ad7c7830;object-fit:cover}
+.detail h2{font-size:clamp(42px,4.4vw,65px);color:#ad7439;border-bottom:1px solid #efcfbd;margin:0 0 22px;padding-bottom:16px}
+.detail p{color:#78665d}
+.field-label{font-size:16px;margin:30px 0 14px;color:#543b34}
+.choices{gap:10px}
+.choice{background:#fffaf8;border:1px solid #efd5cb;border-radius:12px;padding:16px 14px;min-width:85px;flex:1}
+.choice.selected{border:2px solid var(--gold);background:#fff9f2;padding:15px 13px}
+.color-choices .choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:105px;min-height:125px}
+.flower-symbol{font-size:45px;line-height:1.1}
+.detail-actions{margin-top:32px}
+.detail-actions .btn{flex:1;min-height:54px;font-size:15px}
+#carrinho{background:linear-gradient(180deg,#fff8f5,#fceee9);border-top:1px solid #f2d6cc;border-radius:30px;margin-top:26px;padding:32px 24px}
+#carrinho h2{display:none}#carrinho>.subtitle{display:none}
+.cart{max-width:none;border-radius:20px;background:#fffdfb;padding:24px}
+.cart h3{font-size:32px}
+.cart-item{background:#fff9f6;border:1px solid #f2ded8;padding:14px;border-radius:15px}
+.cart-right strong{font-size:22px;color:var(--gold)}
+#catalog{padding:25px 0}
+@media(max-width:740px){header{min-height:auto}.brand{padding-left:46px}.brand:before{font-size:40px}.header-links{width:100%;justify-content:space-between}.mainnav{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto}.mainnav button,.mainnav a{white-space:nowrap}.detail{grid-template-columns:1fr;gap:18px}.detail>img{height:420px}.detail h2{font-size:44px}.color-choices .choice{min-width:40%;min-height:100px}.flower-symbol{font-size:34px}.choice{min-width:65px}#carrinho{padding:20px 10px}}
 </style>
 </head>
 <body>
-<header><a href="#inicio" class="brand">FLORICULTURA CARVALHO<small>Flores que encantam, gestos que marcam.</small></a><nav class="header-links"><a href="#produtos">Produtos</a><a href="#carrinho">Carrinho 🛒 <span id="cart-count">0</span></a><a href="https://wa.me/5585994307093" target="_blank" rel="noopener">WhatsApp</a></nav></header>
-<section class="welcome" id="inicio"><div class="welcome-inner"><span class="ornament">❀ &nbsp; ♡ &nbsp; ❀</span><h1>Flores que encantam, gestos que marcam.</h1><p>Um presente cheio de amor, delicadeza e encanto em cada detalhe.</p><a class="btn" href="#produtos">Conheça nossos buquês ♡</a></div><div class="welcome-photo"><img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=1100" alt="Rosas vermelhas para presentear"></div></section>
+<header><a href="#inicio" class="brand" onclick="openProduct('rosas')">FLORICULTURA<br> CARVALHO<small>Flores que encantam, gestos que marcam.</small></a><div class="header-links"><label class="searchbox">⌕ <input id="search" placeholder="Buscar produtos..." oninput="searchProducts(this.value)" aria-label="Buscar produtos"></label><a href="https://wa.me/5585994307093" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a><a href="#carrinho" aria-label="Carrinho">🛒 <span id="cart-count">0</span></a></div></header><nav class="mainnav"><button onclick="openProduct('rosas')">⌂ Início</button><button onclick="showCatalog();setCategory('Buquês')">♧ Buquês de Rosas</button><button onclick="showCatalog();setCategory('Buquês')">♔ Buquês Especiais</button><button onclick="showCatalog();setCategory('Cestas')">♧ Cestas</button><button onclick="showCatalog();setCategory('Botões de flores')">❀ Botões de Flores</button><a href="#rodape">♡ Sobre Nós</a><button onclick="showCatalog()">Ver todas as categorias</button></nav>
+
 <main>
 <section class="section" id="produtos"><div id="catalog"><h2>Nossos produtos</h2><p class="subtitle">Presentes especiais, escolhidos com carinho ♡</p><div class="tabs" id="tabs" aria-label="Categorias"></div><div class="catalog-heading" id="catalog-heading">Produtos em destaque</div><div class="products" id="products"></div><p class="empty hidden" id="category-empty">Em breve, novos produtos nesta categoria.</p></div><div class="hidden" id="product-detail"></div></section>
 <section class="section" id="carrinho"><h2>Seu carrinho</h2><p class="subtitle">Confira seu pedido antes de enviar.</p><div class="cart"><h3>Meu pedido ♡</h3><div id="cart-items"><p class="empty">Seu carrinho está vazio.</p></div><div class="total" id="total">Total: R$ 0,00</div><button class="btn" id="checkout" onclick="sendWhatsApp()">Finalizar pedido pelo WhatsApp</button><p class="note">A disponibilidade, o pagamento e a entrega serão confirmados pelo WhatsApp.</p></div></section>
 </main>
-<footer><h3>Floricultura Carvalho</h3><p>Flores que encantam, gestos que marcam.</p><p>Pedidos e atendimento pelo WhatsApp.</p><p>© 2026 Floricultura Carvalho</p></footer>
+<footer id="rodape"><h3>Floricultura Carvalho</h3><p>Flores que encantam, gestos que marcam.</p><p>Pedidos e atendimento pelo WhatsApp.</p><p>© 2026 Floricultura Carvalho</p></footer>
 <script>
 const whatsapp="5585994307093";
 const categories=["Todos","Balões","Botões de flores","Buquês","Cestas","Cestas de café da manhã","Chocolates","Pelúcias"];
@@ -78,6 +115,7 @@ const money=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const byId=id=>document.getElementById(id);
 function showCatalog(){selectedProduct=null;byId("catalog").classList.remove("hidden");byId("product-detail").classList.add("hidden");renderCatalog();location.hash="produtos"}
 function setCategory(category){activeCategory=category;renderCatalog()}
+function searchProducts(q){showCatalog();activeCategory="Todos";renderCatalog();const term=q.trim().toLowerCase();document.querySelectorAll(".product").forEach(el=>{el.style.display=el.textContent.toLowerCase().includes(term)?"":"none"})}
 function renderCatalog(){
 byId("tabs").innerHTML=categories.map((c,i)=>'<button class="tab '+(c===activeCategory?'active':'')+'" onclick="setCategory(categories['+i+'])">'+c+'</button>').join("");
 byId("catalog-heading").textContent=activeCategory==="Todos"?"Produtos em destaque":activeCategory;
@@ -90,11 +128,11 @@ selectedProduct=products.find(p=>p.id===id);if(!selectedProduct)return;
 selectedColor="Vermelhas";selectedRoses=6;
 byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");renderDetail();location.hash="produtos";
 }
-function chooseColor(i){selectedColor=colors[i];renderDetail()}
-function chooseRoses(n){selectedRoses=n;renderDetail()}
+function chooseColor(i){const units=byId("units")?.value||"1";selectedColor=colors[i];renderDetail();byId("units").value=units}
+function chooseRoses(n){const units=byId("units")?.value||"1";selectedRoses=n;renderDetail();byId("units").value=units}
 function renderDetail(){
 const p=selectedProduct;if(!p)return;
-const colorChoices=(p.rose||p.colors)?'<div class="field-label">Escolha a cor das rosas:</div><div class="choices">'+colors.map((c,i)=>'<button class="choice '+(c===selectedColor?'selected':'')+'" onclick="chooseColor('+i+')">'+(['🤍','🌸','🌹','💐'][i])+'<br>'+c+'</button>').join("")+'</div>':'';
+const colorChoices=(p.rose||p.colors)?'<div class="field-label">🌹 Escolha a cor das rosas:</div><div class="choices color-choices">'+colors.map((c,i)=>'<button class="choice '+(c===selectedColor?'selected':'')+'" onclick="chooseColor('+i+')"><span class="flower-symbol">'+(['🤍','🌸','🌹','💐'][i])+'</span>'+c+'</button>').join("")+'</div>':'';
 const roseChoices=p.rose?'<div class="field-label">Escolha quantas rosas deseja:</div><div class="choices">'+Object.keys(rosePrices).map(n=>'<button class="choice '+(+n===selectedRoses?'selected':'')+'" onclick="chooseRoses('+n+')">'+n+' rosas</button>').join("")+'</div>':'';
 byId("product-detail").innerHTML='<button class="back" onclick="showCatalog()">← Voltar aos produtos</button><div class="detail"><img src="'+p.image+'" alt="'+p.name+'"><div><h2>'+p.name+'</h2><p>'+p.description+'</p>'+colorChoices+roseChoices+'<div class="field-label">Quantidade de unidades:</div><div class="detail-actions"><input id="units" type="number" min="1" max="99" value="1" aria-label="Quantidade de unidades"><button class="btn" onclick="addSelected()">Adicionar ao carrinho</button></div><p class="note">'+(p.rose?'O valor será exibido somente no carrinho.':'O valor do produto aparecerá no carrinho.')+'</p></div></div>';
 }
@@ -120,6 +158,6 @@ cart.forEach(item=>{message+=item.quantity+"x "+item.name+(item.color?" | Cor: "
 message+="\nTotal: "+money(cart.reduce((s,x)=>s+x.price*x.quantity,0))+"\n\nGostaria de confirmar a disponibilidade e combinar a entrega.";
 window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_blank","noopener");
 }
-renderCatalog();renderCart();
+renderCatalog();renderCart();openProduct("rosas");
 </script>
 </body></html>
