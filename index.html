@@ -108,6 +108,9 @@ const products=[
 ];
 const rosePrices={3:100,4:130,6:180,8:200,10:250};
 const colors=["Brancas","Rosas","Vermelhas","Cores variadas"];
+const buttonColors=["Vermelha","Rosa","Branca"];
+function isFlowerButton(p){return p.category==="Botões de flores"}
+function hasColorOptions(p){return p.category==="Buquês"||isFlowerButton(p)}
 let activeCategory="Todos",selectedProduct=null,selectedColor="Vermelhas",selectedRoses=6;
 const cart=[];
 const money=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
@@ -126,21 +129,22 @@ byId("products").innerHTML=visible.map(p=>'<article class="product"><img src="'+
 }
 function openProduct(id){
 selectedProduct=products.find(p=>p.id===id);if(!selectedProduct)return;
-selectedColor="Vermelhas";selectedRoses=6;
+selectedColor=isFlowerButton(selectedProduct)?"Vermelha":"Vermelhas";selectedRoses=6;
 byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");byId("browse-more").classList.remove("hidden");renderDetail();location.hash="produtos";
 }
-function chooseColor(i){const units=byId("units")?.value||"1";selectedColor=colors[i];renderDetail();byId("units").value=units}
+function chooseColor(i){const units=byId("units")?.value||"1";selectedColor=(isFlowerButton(selectedProduct)?buttonColors:colors)[i];renderDetail();byId("units").value=units}
 function chooseRoses(n){const units=byId("units")?.value||"1";selectedRoses=n;renderDetail();byId("units").value=units}
 function renderDetail(){
 const p=selectedProduct;if(!p)return;
-const colorChoices=(p.rose||p.colors)?'<div class="field-label">🌹 1. Escolha a cor das rosas:</div><div class="choices color-choices">'+colors.map((c,i)=>'<button class="choice '+(c===selectedColor?'selected':'')+'" onclick="chooseColor('+i+')"><span class="flower-symbol">'+(['🤍','🌸','🌹','💐'][i])+'</span>'+c+'</button>').join("")+'</div>':'';
+const availableColors=isFlowerButton(p)?buttonColors:colors;
+const colorChoices=hasColorOptions(p)?'<div class="field-label">🌹 Escolha a cor '+(isFlowerButton(p)?'dos botões':'das rosas')+':</div><div class="choices color-choices">'+availableColors.map((c,i)=>'<button type="button" class="choice '+(c===selectedColor?'selected':'')+'" onclick="chooseColor('+i+')"><span class="flower-symbol">'+(isFlowerButton(p)?['🌹','🌸','🤍'][i]:['🤍','🌸','🌹','💐'][i])+'</span>'+c+'</button>').join("")+'</div>':'';
 const roseChoices=p.rose?'<div class="field-label">2. Escolha quantas rosas deseja:</div><div class="choices">'+Object.keys(rosePrices).map(n=>'<button class="choice '+(+n===selectedRoses?'selected':'')+'" onclick="chooseRoses('+n+')">'+n+' rosas</button>').join("")+'</div>':'';
-byId("product-detail").innerHTML='<div class="detail-toolbar"><button class="back" onclick="continueShopping()">← Voltar aos produtos</button><span>Escolha sua cor e quantidade de rosas abaixo ♡</span></div><div class="detail"><img src="'+p.image+'" alt="'+p.name+'"><div><h2>'+p.name+'</h2><p>'+p.description+'</p>'+colorChoices+roseChoices+'<div class="field-label">Quantidade de unidades:</div><div class="detail-actions"><input id="units" type="number" min="1" max="99" value="1" aria-label="Quantidade de unidades"><button class="btn" onclick="addSelected()">Adicionar ao carrinho</button></div><p class="note">'+(p.rose?'O valor será exibido somente no carrinho.':'O valor do produto aparecerá no carrinho.')+'</p></div></div>';
+byId("product-detail").innerHTML='<div class="detail-toolbar"><button class="back" onclick="continueShopping()">← Voltar aos produtos</button><span>'+ (p.rose?'Escolha a cor e a quantidade de rosas ♡':isFlowerButton(p)?'Escolha a cor dos botões ♡':'Escolha seu presente ♡') +'</span></div><div class="detail"><img src="'+p.image+'" alt="'+p.name+'"><div><h2>'+p.name+'</h2><p>'+p.description+'</p>'+colorChoices+roseChoices+'<div class="field-label">Quantidade de unidades:</div><div class="detail-actions"><input id="units" type="number" min="1" max="99" value="1" aria-label="Quantidade de unidades"><button class="btn" onclick="addSelected()">Adicionar ao carrinho</button></div><p class="note">'+(p.rose?'O valor será exibido somente no carrinho.':'O valor do produto aparecerá no carrinho.')+'</p></div></div>';
 }
 function addSelected(){
 const p=selectedProduct;if(!p)return;
 const units=Number(byId("units").value);if(!Number.isInteger(units)||units<1||units>99){alert("Escolha uma quantidade de 1 a 99.");return}
-const item={id:p.id,name:p.name,price:p.rose?rosePrices[selectedRoses]:p.price,color:p.rose||p.colors?selectedColor:null,roses:p.rose?selectedRoses:null,quantity:units};
+const item={id:p.id,name:p.name,price:p.rose?rosePrices[selectedRoses]:p.price,color:hasColorOptions(p)?selectedColor:null,roses:p.rose?selectedRoses:null,quantity:units};
 const existing=cart.find(x=>x.id===item.id&&x.color===item.color&&x.roses===item.roses);
 if(existing)existing.quantity+=units;else cart.push(item);
 renderCart();location.hash="carrinho";
