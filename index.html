@@ -106,6 +106,24 @@ const products=[
 {id:"rosas",name:"Buquê de Rosas",category:"Buquês",image:"https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=900",description:"Um buquê de rosas especial para presentear com carinho.",contents:"",rose:true},
 {id:"colorido",name:"Buquê Colorido",category:"Buquês",image:"https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=900",description:"Flores coloridas para iluminar qualquer ocasião.",contents:"",rose:true}
 ];
+ 
+async function carregarProdutosSupabase() {
+  const resposta = await fetch(
+    SUPABASE_URL + "/rest/v1/produtos?select=*",
+    {
+      headers: {
+        apikey: SUPABASE_KEY
+      }
+    }
+  );
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao carregar produtos");
+  }
+
+  return await resposta.json();
+}
+ 
 const rosePrices={3:100,4:130,6:180,8:200,10:250};
 const colors=["Brancas","Rosas","Vermelhas","Cores variadas"];
 const buttonColors=["Vermelha","Rosa","Branca"];
@@ -174,7 +192,8 @@ message+="\nSubtotal dos itens com preço definido: "+money(cart.reduce((s,x)=>s
 message+=uber?"\nForma de recebimento: Uber Flash solicitado e pago pelo cliente\nColeta: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nVou solicitar o Uber Flash depois que vocês confirmarem que meu pedido está pronto para retirada.":"\nForma de recebimento: Retirada pessoalmente na loja\nEndereço: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nGostaria de combinar o horário da retirada.";
 window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_blank","noopener");
 }
-renderCatalog();renderCart();openProduct("rosas");
+carregarProdutosSupabase().then(dados => { console.log("Produtos carregados:", dados); }).catch(erro => { console.error("Erro no Supabase:", erro); });
+renderCatalog();renderCart();openProduct("rosas"); 
   
 const SUPABASE_URL = "https://fqfdqqbjqmteiteywdpf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_cFc7q5pzu-W_-eofnSEnew_6diosKnQ";
