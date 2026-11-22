@@ -161,8 +161,8 @@ function sendWhatsApp(){
 if(!cart.length){alert("Adicione pelo menos um produto ao carrinho.");return}
 let message="Olá! Vim pelo site da Floricultura Carvalho e gostaria de fazer um pedido:\n\n";
 cart.forEach(item=>{message+=item.quantity+"x "+item.name+(item.color?" | Cor: "+item.color:"")+(item.roses?" | "+item.roses+" rosas por buquê":"")+" | "+money(item.price*item.quanconst uber=document.querySelector('input[name="delivery-method"]:checked')?.value==="uber";
-message+="\\nTotal dos produtos: "+money(cart.reduce((s,x)=>s+x.price*x.quantity,0));
-message+=uber?"\\nForma de recebimento: Uber Flash solicitado e pago pelo cliente\\nColeta: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\\nVou solicitar o Uber Flash depois que vocês confirmarem que meu pedido está pronto para retirada.":"\\nForma de recebimento: Retirada pessoalmente na loja\\nEndereço: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\\nGostaria de combinar o horário da retirada.";
+message+="\nTotal dos produtos: "+money(cart.reduce((s,x)=>s+x.price*x.quantity,0));
+message+=uber?"\nForma de recebimento: Uber Flash solicitado e pago pelo cliente\nColeta: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nVou solicitar o Uber Flash depois que vocês confirmarem que meu pedido está pronto para retirada.":"\nForma de recebimento: Retirada pessoalmente na loja\nEndereço: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nGostaria de combinar o horário da retirada.";
 window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_blank","noopener");
 }
 renderCatalog();renderCart();openProduct("rosas");
