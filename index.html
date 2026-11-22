@@ -122,6 +122,8 @@ function setCategory(category){activeCategory=category;continueShopping();active
 function searchProducts(q){showCatalog();activeCategory="Todos";renderCatalog();const term=q.trim().toLowerCase();document.querySelectorAll(".product").forEach(el=>{el.style.display=el.textContent.toLowerCase().includes(term)?"":"none"})}
 function flowerFallback(name){const svg='<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700"><rect width="900" height="700" fill="#f8eae7"/><g fill="none" stroke="#b88a44" stroke-width="12" stroke-linecap="round"><path d="M450 510V290M450 400Q350 315 290 360M450 430Q540 350 620 385"/><path d="M450 300C330 240 345 135 420 150C450 65 540 115 510 175C605 135 620 260 515 285C500 335 445 350 450 300Z"/><path d="M450 280C400 220 420 170 465 175C515 190 520 245 450 280Z"/></g><text x="450" y="605" text-anchor="middle" font-family="Georgia,serif" font-size="42" fill="#8c6542">'+name.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</text></svg>';return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
 function imageFallback(img,name){if(img.dataset.fallback)return;img.dataset.fallback='1';img.src=flowerFallback(name)}
+// Ilustrações incorporadas: independem de sites externos para carregar.
+products.forEach(p=>{p.image=flowerFallback(p.name)});
 function renderCatalog(){
 byId("tabs").innerHTML=categories.map((c,i)=>'<button class="tab '+(c===activeCategory?'active':'')+'" onclick="setCategory(categories['+i+'])">'+c+'</button>').join("");
 byId("catalog-heading").textContent=activeCategory==="Todos"?"Produtos em destaque":activeCategory;
