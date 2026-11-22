@@ -1,1 +1,384 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floricultura Carvalho | Flores com amor</title>
+  <meta name="description" content="Conheça os buquês, flores e arranjos da Floricultura Carvalho. Faça seu pedido pelo WhatsApp.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: #fffaf8;
+      color: #44352f;
+    }
+
+    header {
+      background: #fff;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f0e5df;
+    }
+
+    .logo {
+      color: #8c5360;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #59443e;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    .hero {
+      min-height: 470px;
+      padding: 70px 8%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(45,30,28,.72), rgba(45,30,28,.10)),
+        url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1600");
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 550px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 62px);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #925b68;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    .section {
+      padding: 65px 7%;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #86515e;
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #8d7b73;
+      margin-bottom: 35px;
+      font-family: Arial, sans-serif;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      text-align: left;
+    }
+
+    .product {
+      background: white;
+      border-radius: 9px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(80,50,40,.08);
+    }
+
+    .product img {
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 19px;
+    }
+
+    .product h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .product p {
+      color: #8c5360;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .product button {
+      width: 100%;
+    }
+
+    .cart {
+      max-width: 700px;
+      margin: 35px auto 0;
+      padding: 25px;
+      background: white;
+      border: 1px solid #f0e5df;
+      border-radius: 9px;
+      text-align: left;
+    }
+
+    .cart h3 {
+      color: #86515e;
+      margin-bottom: 18px;
+      font-size: 23px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      font-family: Arial, sans-serif;
+    }
+
+    .remove {
+      color: #a34b4b;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .total {
+      font-weight: bold;
+      margin: 20px 0;
+      font-size: 19px;
+    }
+
+    .empty {
+      color: #8d7b73;
+      font-family: Arial, sans-serif;
+    }
+
+    footer {
+      background: #6d454d;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero {
+        min-height: 400px;
+        padding: 50px 7%;
+      }
+
+      .section {
+        padding: 45px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Floricultura Carvalho 🌷</div>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#carrinho">Carrinho</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Flores que encantam, momentos que ficam.</h1>
+      <p>
+        Surpreenda quem você ama com flores especiais.
+        Escolha seu arranjo e faça seu pedido conosco!
+      </p>
+      <a href="#produtos" class="button">Conheça nossos produtos</a>
+    </div>
+  </section>
+
+  <section class="section" id="produtos">
+    <h2>Nossos produtos</h2>
+    <p class="subtitle">Escolha flores para tornar cada momento especial.</p>
+
+    <div class="products">
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=700" alt="Buquê de rosas">
+        <div class="product-info">
+          <h3>Buquê de Rosas</h3>
+          <p>R$ 120,00</p>
+          <button class="button" onclick="addCart('Buquê de Rosas',120)">Adicionar ao carrinho</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=700" alt="Buquê de flores coloridas">
+        <div class="product-info">
+          <h3>Buquê Colorido</h3>
+          <p>R$ 95,00</p>
+          <button class="button" onclick="addCart('Buquê Colorido',95)">Adicionar ao carrinho</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=700" alt="Arranjo floral">
+        <div class="product-info">
+          <h3>Arranjo Especial</h3>
+          <p>R$ 150,00</p>
+          <button class="button" onclick="addCart('Arranjo Especial',150)">Adicionar ao carrinho</button>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=700" alt="Flores delicadas">
+        <div class="product-info">
+          <h3>Flores Delicadas</h3>
+          <p>R$ 80,00</p>
+          <button class="button" onclick="addCart('Flores Delicadas',80)">Adicionar ao carrinho</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" id="carrinho">
+    <h2>Seu carrinho</h2>
+    <p class="subtitle">Confira seus produtos antes de finalizar.</p>
+
+    <div class="cart">
+      <h3>🛍️ Meu pedido</h3>
+      <div id="cart-items">
+        <p class="empty">Seu carrinho está vazio.</p>
+      </div>
+      <div class="total" id="total">Total: R$ 0,00</div>
+      <button class="button" onclick="sendWhatsApp()">
+        Finalizar pedido pelo WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Floricultura Carvalho 🌷</h3>
+    <p>Flores especiais para momentos inesquecíveis.</p>
+    <p>Pedidos e atendimento pelo WhatsApp.</p>
+    <p>© 2026 Floricultura Carvalho</p>
+  </footer>
+
+  <script>
+    const whatsapp = "5585994307093";
+    const cart = [];
+
+    function formatPrice(value) {
+      return value.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function addCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      renderCart();
+      alert(name + " adicionado ao carrinho!");
+    }
+
+    function removeCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cart-items");
+      const totalElement = document.getElementById("total");
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="empty">Seu carrinho está vazio.</p>';
+      } else {
+        container.innerHTML = cart.map((item, index) => `
+          <div class="cart-item">
+            <span>${item.quantity}x ${item.name} - ${formatPrice(item.price * item.quantity)}</span>
+            <button class="remove" onclick="removeCart(${index})">Remover</button>
+          </div>
+        `).join("");
+      }
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+      );
+
+      totalElement.textContent = "Total: " + formatPrice(total);
+    }
+
+    function sendWhatsApp() {
+      if (cart.length === 0) {
+        alert("Adicione pelo menos um produto ao carrinho.");
+        return;
+      }
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+      );
+
+      let message = "Olá! Vim pelo site da Floricultura Carvalho e gostaria de fazer um pedido:\n\n";
+
+      cart.forEach(item => {
+        message += `${item.quantity}x ${item.name} - ${formatPrice(item.price * item.quantity)}\n`;
+      });
+
+      message += `\nTotal: ${formatPrice(total)}`;
+      message += "\n\nGostaria de confirmar a disponibilidade e combinar a entrega. Obrigado!";
+
+      const url = "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
+
