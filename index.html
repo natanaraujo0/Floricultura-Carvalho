@@ -103,7 +103,7 @@ main{max-width:1320px;padding:0 3%}
 const whatsapp="5585994307093";
 const categories=["Todos","Mais vendidos","Balões","Botões de flores","Buquês","Cestas","Cestas de café da manhã","Chocolates","Pelúcias"];
 // Produtos de demonstração. Outros produtos e preços serão cadastrados quando informados.
-const products=[
+ let products=[
 {id:"rosas",name:"Buquê de Rosas",category:"Buquês",image:"https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=900",description:"Um buquê de rosas especial para presentear com carinho.",contents:"",rose:true},
 {id:"colorido",name:"Buquê Colorido",category:"Buquês",image:"https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=900",description:"Flores coloridas para iluminar qualquer ocasião.",contents:"",rose:true}
 ];
@@ -193,7 +193,16 @@ message+="\nSubtotal dos itens com preço definido: "+money(cart.reduce((s,x)=>s
 message+=uber?"\nForma de recebimento: Uber Flash solicitado e pago pelo cliente\nColeta: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nVou solicitar o Uber Flash depois que vocês confirmarem que meu pedido está pronto para retirada.":"\nForma de recebimento: Retirada pessoalmente na loja\nEndereço: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE\nGostaria de combinar o horário da retirada.";
 window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_blank","noopener");
 }
-carregarProdutosSupabase().then(dados => { console.log("Produtos carregados:", dados); }).catch(erro => { console.error("Erro no Supabase:", erro); });
+carregarProdutosSupabase().then(dados => { products = dados.map(p => ({
+  id: String(p.id),
+  name: p.nome,
+  category: p.categoria,
+  image: p.imagem_url,
+  description: p.descricao,
+  price: p.preco,
+  rose: p.categoria === "Buquês"
+}));
+renderCatalog(); }).catch(erro => { console.error("Erro no Supabase:", erro); });
 renderCatalog();renderCart();openProduct("rosas"); 
   
 
