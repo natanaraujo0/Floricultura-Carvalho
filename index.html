@@ -98,7 +98,8 @@ main{max-width:1320px;padding:0 3%}
 <section class="section" id="carrinho"><h2>Seu carrinho</h2><p class="subtitle">Confira seu pedido antes de enviar.</p><div class="cart"><h3>Meu pedido ♡</h3><div id="cart-items"><p class="empty">Seu carrinho está vazio.</p></div><div class="total" id="total">Total: R$ 0,00</div><fieldset class="fulfillment"><legend>Como deseja receber seu pedido?</legend><label><input type="radio" name="delivery-method" value="retirada" onchange="updateFulfillment()" checked> 🏬 Retirar na loja</label><label><input type="radio" name="delivery-method" value="uber" onchange="updateFulfillment()"> 🛵 Entrega por Uber Flash — solicitada pelo cliente</label><div id="pickup-info" class="fulfillment-info">Retirada: Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE.</div><div id="delivery-info" class="fulfillment-info hidden"><strong>Entrega por Uber Flash</strong><p>A Floricultura Carvalho não possui entregador próprio. O cliente deverá solicitar e pagar o Uber Flash após a confirmação de que o pedido está pronto para retirada.</p><p><strong>Endereço de coleta:</strong> Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE.</p></div></fieldset><div class="cart-actions"><button class="btn outline" onclick="continueShopping()" type="button">← Continuar comprando / Escolher mais produtos</button><button class="btn" id="checkout" onclick="sendWhatsApp()">Finalizar pedido pelo WhatsApp</button></div><p class="note">A disponibilidade, o pagamento e a entrega serão confirmados pelo WhatsApp.</p></div></section>
 </main>
 <footer id="rodape"><h3>Floricultura Carvalho</h3><p>Flores que encantam, gestos que marcam.</p><p>Pedidos e atendimento pelo WhatsApp.</p><p>📍 Rua Luiz Gonzaga dos Santos, 702 — Maracanaú, CE</p><p>© 2026 Floricultura Carvalho</p></footer>
-<script>
+<script> const SUPABASE_URL = "https://fqfdqqbjqmteiteywdpf.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_cFc7q5pzu-W_-eofnSEnew_6diosKnQ";
 const whatsapp="5585994307093";
 const categories=["Todos","Mais vendidos","Balões","Botões de flores","Buquês","Cestas","Cestas de café da manhã","Chocolates","Pelúcias"];
 // Produtos de demonstração. Outros produtos e preços serão cadastrados quando informados.
@@ -195,8 +196,7 @@ window.open("https://wa.me/"+whatsapp+"?text="+encodeURIComponent(message),"_bla
 carregarProdutosSupabase().then(dados => { console.log("Produtos carregados:", dados); }).catch(erro => { console.error("Erro no Supabase:", erro); });
 renderCatalog();renderCart();openProduct("rosas"); 
   
-const SUPABASE_URL = "https://fqfdqqbjqmteiteywdpf.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_cFc7q5pzu-W_-eofnSEnew_6diosKnQ";
+
 
 </script>
 </body></html>
