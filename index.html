@@ -88,13 +88,13 @@ main{max-width:1320px;padding:0 3%}
 .cart-right strong{font-size:22px;color:var(--gold)}
 #catalog{padding:25px 0}
 @media(max-width:740px){header{min-height:auto}.brand{padding-left:46px}.brand:before{font-size:40px}.header-links{width:100%;justify-content:space-between}.mainnav{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto}.mainnav button,.mainnav a{white-space:nowrap}.detail{grid-template-columns:1fr;gap:18px}.detail>img{height:420px}.detail h2{font-size:44px}.color-choices .choice{min-width:40%;min-height:100px}.flower-symbol{font-size:34px}.choice{min-width:65px}#carrinho{padding:20px 10px}}
-</style>
+.detail-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;padding:13px 18px;background:#fff0ec;border:1px solid #f0d6cc;border-radius:14px}.detail-toolbar .back{padding:0;font-weight:700;font-size:15px;text-decoration:underline}.detail-toolbar span{font-size:12px;color:#946b60}.browse-more{text-align:center;padding:25px 0 4px}.detail .field-label{font-weight:700}.detail .choices{margin-bottom:12px}.detail .choice:focus-visible{outline:3px solid #B88A44;outline-offset:2px}@media(max-width:740px){.detail-toolbar{flex-direction:column;align-items:flex-start}.detail>img{height:300px}}</style>
 </head>
 <body>
 <header><a href="#inicio" class="brand" onclick="openProduct('rosas')">FLORICULTURA<br> CARVALHO<small>Flores que encantam, gestos que marcam.</small></a><div class="header-links"><label class="searchbox">⌕ <input id="search" placeholder="Buscar produtos..." oninput="searchProducts(this.value)" aria-label="Buscar produtos"></label><a href="https://wa.me/5585994307093" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a><a href="#carrinho" aria-label="Carrinho">🛒 <span id="cart-count">0</span></a></div></header><nav class="mainnav"><button onclick="openProduct('rosas')">⌂ Início</button><button onclick="showCatalog();setCategory('Buquês')">♧ Buquês de Rosas</button><button onclick="showCatalog();setCategory('Buquês')">♔ Buquês Especiais</button><button onclick="showCatalog();setCategory('Cestas')">♧ Cestas</button><button onclick="showCatalog();setCategory('Botões de flores')">❀ Botões de Flores</button><a href="#rodape">♡ Sobre Nós</a><button onclick="showCatalog()">Ver todas as categorias</button></nav>
 
 <main>
-<section class="section" id="produtos"><div id="catalog"><h2>Nossos produtos</h2><p class="subtitle">Presentes especiais, escolhidos com carinho ♡</p><div class="tabs" id="tabs" aria-label="Categorias"></div><div class="catalog-heading" id="catalog-heading">Produtos em destaque</div><div class="products" id="products"></div><p class="empty hidden" id="category-empty">Em breve, novos produtos nesta categoria.</p></div><div class="hidden" id="product-detail"></div></section>
+<section class="section" id="produtos"><div id="catalog"><h2>Nossos produtos</h2><p class="subtitle">Presentes especiais, escolhidos com carinho ♡</p><div class="tabs" id="tabs" aria-label="Categorias"></div><div class="catalog-heading" id="catalog-heading">Produtos em destaque</div><div class="products" id="products"></div><p class="empty hidden" id="category-empty">Em breve, novos produtos nesta categoria.</p></div><div class="hidden" id="product-detail"></div><div class="browse-more hidden" id="browse-more"><button class="btn outline" onclick="showCatalog()">← Voltar e observar outros produtos</button></div></section>
 <section class="section" id="carrinho"><h2>Seu carrinho</h2><p class="subtitle">Confira seu pedido antes de enviar.</p><div class="cart"><h3>Meu pedido ♡</h3><div id="cart-items"><p class="empty">Seu carrinho está vazio.</p></div><div class="total" id="total">Total: R$ 0,00</div><button class="btn" id="checkout" onclick="sendWhatsApp()">Finalizar pedido pelo WhatsApp</button><p class="note">A disponibilidade, o pagamento e a entrega serão confirmados pelo WhatsApp.</p></div></section>
 </main>
 <footer id="rodape"><h3>Floricultura Carvalho</h3><p>Flores que encantam, gestos que marcam.</p><p>Pedidos e atendimento pelo WhatsApp.</p><p>© 2026 Floricultura Carvalho</p></footer>
@@ -113,7 +113,7 @@ let activeCategory="Todos",selectedProduct=null,selectedColor="Vermelhas",select
 const cart=[];
 const money=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const byId=id=>document.getElementById(id);
-function showCatalog(){selectedProduct=null;byId("catalog").classList.remove("hidden");byId("product-detail").classList.add("hidden");renderCatalog();location.hash="produtos"}
+function showCatalog(){selectedProduct=null;byId("catalog").classList.remove("hidden");byId("product-detail").classList.add("hidden");byId("browse-more").classList.add("hidden");renderCatalog();location.hash="produtos"}
 function setCategory(category){activeCategory=category;renderCatalog()}
 function searchProducts(q){showCatalog();activeCategory="Todos";renderCatalog();const term=q.trim().toLowerCase();document.querySelectorAll(".product").forEach(el=>{el.style.display=el.textContent.toLowerCase().includes(term)?"":"none"})}
 function renderCatalog(){
@@ -126,7 +126,7 @@ byId("products").innerHTML=visible.map(p=>'<article class="product"><img src="'+
 function openProduct(id){
 selectedProduct=products.find(p=>p.id===id);if(!selectedProduct)return;
 selectedColor="Vermelhas";selectedRoses=6;
-byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");renderDetail();location.hash="produtos";
+byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");byId("browse-more").classList.remove("hidden");renderDetail();location.hash="produtos";
 }
 function chooseColor(i){const units=byId("units")?.value||"1";selectedColor=colors[i];renderDetail();byId("units").value=units}
 function chooseRoses(n){const units=byId("units")?.value||"1";selectedRoses=n;renderDetail();byId("units").value=units}
@@ -134,7 +134,7 @@ function renderDetail(){
 const p=selectedProduct;if(!p)return;
 const colorChoices=(p.rose||p.colors)?'<div class="field-label">🌹 Escolha a cor das rosas:</div><div class="choices color-choices">'+colors.map((c,i)=>'<button class="choice '+(c===selectedColor?'selected':'')+'" onclick="chooseColor('+i+')"><span class="flower-symbol">'+(['🤍','🌸','🌹','💐'][i])+'</span>'+c+'</button>').join("")+'</div>':'';
 const roseChoices=p.rose?'<div class="field-label">Escolha quantas rosas deseja:</div><div class="choices">'+Object.keys(rosePrices).map(n=>'<button class="choice '+(+n===selectedRoses?'selected':'')+'" onclick="chooseRoses('+n+')">'+n+' rosas</button>').join("")+'</div>':'';
-byId("product-detail").innerHTML='<button class="back" onclick="showCatalog()">← Voltar aos produtos</button><div class="detail"><img src="'+p.image+'" alt="'+p.name+'"><div><h2>'+p.name+'</h2><p>'+p.description+'</p>'+colorChoices+roseChoices+'<div class="field-label">Quantidade de unidades:</div><div class="detail-actions"><input id="units" type="number" min="1" max="99" value="1" aria-label="Quantidade de unidades"><button class="btn" onclick="addSelected()">Adicionar ao carrinho</button></div><p class="note">'+(p.rose?'O valor será exibido somente no carrinho.':'O valor do produto aparecerá no carrinho.')+'</p></div></div>';
+byId("product-detail").innerHTML='<div class="detail-toolbar"><button class="back" onclick="showCatalog()">← Voltar aos produtos</button><span>Escolha sua cor e quantidade de rosas abaixo ♡</span></div><div class="detail"><img src="'+p.image+'" alt="'+p.name+'"><div><h2>'+p.name+'</h2><p>'+p.description+'</p>'+colorChoices+roseChoices+'<div class="field-label">Quantidade de unidades:</div><div class="detail-actions"><input id="units" type="number" min="1" max="99" value="1" aria-label="Quantidade de unidades"><button class="btn" onclick="addSelected()">Adicionar ao carrinho</button></div><p class="note">'+(p.rose?'O valor será exibido somente no carrinho.':'O valor do produto aparecerá no carrinho.')+'</p></div></div>';
 }
 function addSelected(){
 const p=selectedProduct;if(!p)return;
