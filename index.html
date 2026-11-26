@@ -204,7 +204,7 @@ main{max-width:1320px;padding:0 3%}
 </style>
 </head>
 <body>
-<header class="store-header"><a href="#catalog" class="brand brand-art" onclick="continueShopping()" aria-label="Floricultura Carvalho, ir aos produtos"><svg class="rose-logo" viewBox="0 0 150 160" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M72 105 C58 122 40 139 14 153 M53 129 Q30 111 8 114 Q22 136 53 129 M45 139 Q20 135 7 144 Q30 153 45 139 M56 126 Q83 125 104 147 Q75 149 56 126"/><path d="M71 109 C53 114 40 105 36 92 C19 89 13 74 24 62 C15 44 30 32 45 33 C43 15 60 9 74 16 C88 2 105 15 109 28 C128 25 136 43 129 58 C144 72 134 91 120 95 C117 113 90 119 71 109Z"/><path d="M74 101 C48 96 39 79 45 62 C43 44 58 34 74 38 C90 26 111 39 109 56 C122 72 106 98 74 101Z"/><path d="M76 91 C56 85 55 65 69 55 C81 42 99 49 100 64 C101 80 80 89 70 78 C61 69 73 57 84 61 C95 65 87 77 79 72 C73 68 78 64 83 66"/><path d="M36 61 Q47 69 52 85 M109 42 Q99 50 99 56 M119 91 Q103 91 94 101"/><path d="M52 128 Q35 119 17 117 M54 128 Q76 132 96 145"/></svg><span class="brand-words"><span class="brand-title">FLORICULTURA<br><strong>CARVALHO</strong></span><span class="brand-tagline">Flores que encantam, gestos que marcam.</span></span><svg class="heart-flourish" viewBox="0 0 210 75" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 33 C-2 8 25 0 34 27 C44 -3 73 11 62 34 C50 60 29 63 34 48 C48 62 72 50 94 40 C135 17 170 15 205 45"/></svg></a><div class="header-links"><label class="searchbox">⌕ <input id="search" placeholder="Buscar produtos..." oninput="searchProducts(this.value)" aria-label="Buscar produtos"></label><a href="https://wa.me/5585994307093" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a><a href="#carrinho" aria-label="Carrinho">🛒 <span id="cart-count">0</span></a></div></header><nav class="mainnav" aria-label="Categorias da loja"><button onclick="continueShopping()">⌂ Início</button><button onclick="setCategory('Mais vendidos')">★ Mais Vendidos</button><button onclick="setCategory('Botões de flores')">❀ Botões de Flores</button><button onclick="setCategory('Buquês')">♧ Buquês de Rosas</button><button onclick="setCategory(specialBouquetsCategory)">♔ Buquês Especiais</button><button onclick="setCategory('Cestas')">♧ Cestas</button><button onclick="setCategory('Cestas de café da manhã')">☕ Cestas do Café da Manhã</button><button onclick="setCategory('Chocolates')">♡ Chocolates</button><button onclick="setCategory('Pelúcias')">♡ Pelúcias</button><button onclick="continueShopping()">Ver todos os produtos</button></nav>
+<header class="store-header"><a href="#catalog" class="brand brand-art" onclick="continueShopping();return false" aria-label="Floricultura Carvalho, ir aos produtos"><svg class="rose-logo" viewBox="0 0 150 160" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M72 105 C58 122 40 139 14 153 M53 129 Q30 111 8 114 Q22 136 53 129 M45 139 Q20 135 7 144 Q30 153 45 139 M56 126 Q83 125 104 147 Q75 149 56 126"/><path d="M71 109 C53 114 40 105 36 92 C19 89 13 74 24 62 C15 44 30 32 45 33 C43 15 60 9 74 16 C88 2 105 15 109 28 C128 25 136 43 129 58 C144 72 134 91 120 95 C117 113 90 119 71 109Z"/><path d="M74 101 C48 96 39 79 45 62 C43 44 58 34 74 38 C90 26 111 39 109 56 C122 72 106 98 74 101Z"/><path d="M76 91 C56 85 55 65 69 55 C81 42 99 49 100 64 C101 80 80 89 70 78 C61 69 73 57 84 61 C95 65 87 77 79 72 C73 68 78 64 83 66"/><path d="M36 61 Q47 69 52 85 M109 42 Q99 50 99 56 M119 91 Q103 91 94 101"/><path d="M52 128 Q35 119 17 117 M54 128 Q76 132 96 145"/></svg><span class="brand-words"><span class="brand-title">FLORICULTURA<br><strong>CARVALHO</strong></span><span class="brand-tagline">Flores que encantam, gestos que marcam.</span></span><svg class="heart-flourish" viewBox="0 0 210 75" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 33 C-2 8 25 0 34 27 C44 -3 73 11 62 34 C50 60 29 63 34 48 C48 62 72 50 94 40 C135 17 170 15 205 45"/></svg></a><div class="header-links"><label class="searchbox">⌕ <input id="search" placeholder="Buscar produtos..." oninput="searchProducts(this.value)" aria-label="Buscar produtos"></label><a href="https://wa.me/5585994307093" target="_blank" rel="noopener" aria-label="WhatsApp">☏</a><a href="#carrinho" aria-label="Carrinho">🛒 <span id="cart-count">0</span></a></div></header><nav class="mainnav" aria-label="Categorias da loja"><button onclick="continueShopping()">⌂ Início</button><button onclick="setCategory('Mais vendidos')">★ Mais Vendidos</button><button onclick="setCategory('Botões de flores')">❀ Botões de Flores</button><button onclick="setCategory('Buquês')">♧ Buquês de Rosas</button><button onclick="setCategory(specialBouquetsCategory)">♔ Buquês Especiais</button><button onclick="setCategory('Cestas')">♧ Cestas</button><button onclick="setCategory('Cestas de café da manhã')">☕ Cestas do Café da Manhã</button><button onclick="setCategory('Chocolates')">♡ Chocolates</button><button onclick="setCategory('Pelúcias')">♡ Pelúcias</button><button onclick="continueShopping()">Ver todos os produtos</button></nav>
 
 <main>
 <section class="section" id="produtos"><div id="catalog"><h2>Nossos produtos</h2><p class="subtitle">Presentes especiais, escolhidos com carinho ♡</p><div class="tabs" id="tabs" aria-label="Categorias"></div><div class="catalog-heading" id="catalog-heading"></div><div class="products" id="products"></div><p class="empty" id="category-empty" role="status">Carregando produtos…</p><div class="catalog-load-actions"><button type="button" class="btn outline hidden" id="catalog-load" onclick="loadMoreProducts()">Carregar mais produtos</button></div></div><div class="hidden" id="product-detail"></div><div class="browse-more hidden" id="browse-more"><button class="btn outline" onclick="continueShopping()" type="button">← Escolher mais produtos</button></div></section>
@@ -377,6 +377,13 @@ function escapeHtml(value){
 }
 const money=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const byId=id=>document.getElementById(id);
+function scrollToCatalog(anchor){
+  byId(anchor).scrollIntoView({behavior:"auto",block:"start"});
+  if(["#produtos","#catalog","#carrinho"].includes(location.hash)){
+    history.replaceState(history.state,"",location.pathname+location.search);
+  }
+}
+
 function showCatalog(load=true){
   selectedProduct=null;
   byId("catalog").classList.remove("hidden");
@@ -396,8 +403,7 @@ function setCategory(category){
   byId("search").value="";
   activeCategory=category;
   const task=showCatalog();
-  byId("catalog").scrollIntoView({behavior:"auto",block:"start"});
-  location.hash="catalog";
+  scrollToCatalog("catalog");
   return task;
 }
 
@@ -417,7 +423,7 @@ function searchProducts(value){
     }
   }
   showCatalog(false);
-  location.hash="produtos";
+  scrollToCatalog("produtos");
   searchTimer=setTimeout(refreshCatalog,300);
 }
 function flowerFallback(name){const svg='<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700"><rect width="900" height="700" fill="#f8eae7"/><g fill="none" stroke="#b88a44" stroke-width="12" stroke-linecap="round"><path d="M450 510V290M450 400Q350 315 290 360M450 430Q540 350 620 385"/><path d="M450 300C330 240 345 135 420 150C450 65 540 115 510 175C605 135 620 260 515 285C500 335 445 350 450 300Z"/><path d="M450 280C400 220 420 170 465 175C515 190 520 245 450 280Z"/></g><text x="450" y="605" text-anchor="middle" font-family="Georgia,serif" font-size="42" fill="#8c6542">'+name.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</text></svg>';return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
@@ -494,7 +500,7 @@ function openProduct(id){
 const product=productCache.get(id);if(!product)return;
 selectedProduct=product;
 selectedColor=productColors(selectedProduct)?.find(color=>color.startsWith("Vermelha"))??null;selectedRoses=6;
-byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");byId("browse-more").classList.remove("hidden");renderDetail();location.hash="produtos";
+byId("catalog").classList.add("hidden");byId("product-detail").classList.remove("hidden");byId("browse-more").classList.remove("hidden");renderDetail();scrollToCatalog("produtos");
 if(product.rose||isSpecialBouquet(product))loadChocolateSuggestions();
 }
 function chooseColor(i){const units=byId("units")?.value;selectedColor=productColors(selectedProduct)[i];renderDetail(units)}
@@ -678,6 +684,9 @@ async function initializeCart(initialCatalog){
 renderCart();
 if(savedCart.length)setCartStatus("Conferindo os itens salvos no catálogo…");
 initializeCart(refreshCatalog());
+if(location.hash==="#produtos"||location.hash==="#catalog"){
+  scrollToCatalog(location.hash.slice(1));
+}
   
 
 
